@@ -1,6 +1,6 @@
 #GDIZServer 
 
-### tables structure
+### DB tables structure
 <table>
 	<td> users </td> 
 	<td></td> 
