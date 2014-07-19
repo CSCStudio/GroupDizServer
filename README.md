@@ -41,7 +41,7 @@
 </table>
 
 
-### Deploy with capistrano
+### Deploy with capistrano+nginx+puma+rvm
 ```
 # Deploy server with capistrano, https://github.com/capistrano/capistrano
 gem 'capistrano', '~> 3.2.1', require: false
