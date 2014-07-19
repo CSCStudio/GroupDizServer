@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140719090959) do
+ActiveRecord::Schema.define(version: 20140719092554) do
+
+  create_table "topics", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "creator_id"
+    t.string   "code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "topics", ["code"], name: "index_topics_on_code", unique: true, using: :btree
+  add_index "topics", ["creator_id"], name: "index_topics_on_creator_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "nickname"
