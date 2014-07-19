@@ -50,3 +50,26 @@ gem 'capistrano-rails', '~> 1.1.1'
 gem 'capistrano-bundler', '~> 1.1.2'
 gem 'capistrano3-puma', '~> 0.6.1'
 ```
+
+### ApiController with version structure
+
+THe Apicontroller supports sub versions.
+
+#### How it works.?
+
+##### routes
+```
+  namespace :api  do
+   namespace :v0  do
+      scope ":sub_version" do
+        resources :topics
+      end
+    end
+  end
+```
+
+sub version is integer , start 1 .
+
+##### controllers
+
+
