@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140719092554) do
+ActiveRecord::Schema.define(version: 20140719093517) do
 
   create_table "topics", force: true do |t|
     t.string   "title"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20140719092554) do
 
   add_index "topics", ["code"], name: "index_topics_on_code", unique: true, using: :btree
   add_index "topics", ["creator_id"], name: "index_topics_on_creator_id", using: :btree
+
+  create_table "topics_participants", force: true do |t|
+    t.integer "topic_id"
+    t.integer "user_id"
+  end
+
+  add_index "topics_participants", ["topic_id", "user_id"], name: "index_topics_participants_on_topic_id_and_user_id", unique: true, using: :btree
+  add_index "topics_participants", ["topic_id"], name: "index_topics_participants_on_topic_id", using: :btree
+  add_index "topics_participants", ["user_id"], name: "index_topics_participants_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "nickname"
