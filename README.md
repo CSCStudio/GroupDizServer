@@ -4,21 +4,39 @@
 ### tables structure
 
 users
-=========
-|id | nickname | identifier |
+<table>
+	<td> id </td> 
+	<td> nickname </td>
+	<td> identifier </td>
+</table>
 
 topics
-=========
-|id | title | description | creator_id | code|
+<table>
+	<td> id </td>
+	<td> title </td> 
+  <td> description </td> 
+  <td> creator_id </td> 
+  <td> code </td>
+</table>
 
 topic_participants
-=========
-|topic_id | user_id |
+<table>
+ <td> topic_id </td> 
+ <td> user_id </td>
+</table>
 
 points
-=========
-|id | title | description | topic_id | user_id |
+<table>
+	<td> id </td>
+	<td> title </td>
+	<td> description </td>
+	<td> topic_id </td>
+	<td> user_id </td>
+</table>
 
 votes
-=========
-| user_id | point_id | kind | 
+<table>
+	<td> user_id </td> 
+	<td> point_id </td>
+	<td> kind </td> 
+</table>
