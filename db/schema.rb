@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140719100008) do
+ActiveRecord::Schema.define(version: 20140719100409) do
 
   create_table "points", force: true do |t|
     t.string   "title"
@@ -51,5 +51,17 @@ ActiveRecord::Schema.define(version: 20140719100008) do
   end
 
   add_index "users", ["identifier"], name: "index_users_on_identifier", unique: true, using: :btree
+
+  create_table "votes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "point_id"
+    t.integer  "kind",       default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["point_id"], name: "index_votes_on_point_id", using: :btree
+  add_index "votes", ["user_id", "point_id"], name: "index_votes_on_user_id_and_point_id", unique: true, using: :btree
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
 end
