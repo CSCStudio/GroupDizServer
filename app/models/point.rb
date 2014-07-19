@@ -12,10 +12,10 @@
 #
 
 class Point < ActiveRecord::Base
-	
-	validates :title, :topic_id, :user_id, presence: true
-	
-	belongs_to :user
-	belongs_to :topic
+  
+  validates :title, :topic_id, :user_id, presence: true
+  
+  belongs_to :user
+  belongs_to :topic
 
 end

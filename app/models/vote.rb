@@ -18,9 +18,9 @@
 
 class Vote < ActiveRecord::Base
 
-	validates :user_id, :point_id, presence: true
-	
-	belongs_to :user
-	belongs_to :point
+  validates :user_id, :point_id, presence: true
+  
+  belongs_to :user
+  belongs_to :point
 
 end
