@@ -33,6 +33,11 @@ group :development do
 	gem 'capistrano3-puma', '~> 0.6.1'
 end
 
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.1'
+  gem 'factory_girl_rails', '~> 4.4.1'
+end
+
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
