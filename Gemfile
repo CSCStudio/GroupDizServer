@@ -30,6 +30,7 @@ group :development do
 	gem 'capistrano-rvm', '~> 0.1.1'
 	gem 'capistrano-rails', '~> 1.1.1'
 	gem 'capistrano-bundler', '~> 1.1.2'
+	gem 'capistrano3-puma', '~> 0.6.1'
 end
 
 # bundle exec rake doc:rails generates the API under doc/api.

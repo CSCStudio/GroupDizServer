@@ -12,6 +12,8 @@ set :user, :deploy
 set :use_sudo, false
 set :git_enable_submodules, true
 
+set :linked_files, %w{config/database.yml config/secrets.yml}
+
 set :ssh_options, {
   forward_agent: true,
   port: 22,
