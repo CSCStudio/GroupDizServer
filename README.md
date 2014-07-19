@@ -1,45 +1,5 @@
 #GDIZServer 
 
-### DB tables structure
-<table>
-	<td> users </td> 
-	<td></td> 
-	<td> id </td> 
-	<td> nickname </td>
-	<td> identifier </td>
-</table>
-<table>
-	<td> topics </td>
-	<td></td>
-	<td> id </td>
-	<td> title </td> 
-  <td> description </td> 
-  <td> creator_id </td> 
-  <td> code </td>
-</table>
-<table>
-  <td> topic_participants </td>
-  <td></td>
-  <td> topic_id </td> 
-  <td> user_id </td>
-</table>
-<table>
-	<td> points </td>
-	<td></td>
-	<td> id </td>
-	<td> title </td>
-	<td> description </td>
-	<td> topic_id </td>
-	<td> user_id </td>
-</table>
-<table>
-	<td> votes </td>
-	<td></td>
-	<td> user_id </td> 
-	<td> point_id </td>
-	<td> kind </td> 
-</table>
-
 
 ### Deploy with capistrano+nginx+puma+rvm
 ```ruby
@@ -51,13 +11,52 @@ gem 'capistrano-bundler', '~> 1.1.2'
 gem 'capistrano3-puma', '~> 0.6.1'
 ```
 
-### ApiController with version structure
 
-THe Apicontroller supports sub versions.
+## Code Structure
 
-#### How it works.?
+### DB tables structure
+<table>
+  <td> users </td> 
+  <td></td> 
+  <td> id </td> 
+  <td> nickname </td>
+  <td> identifier </td>
+</table>
+<table>
+  <td> topics </td>
+  <td></td>
+  <td> id </td>
+  <td> title </td> 
+  <td> description </td> 
+  <td> creator_id </td> 
+  <td> code </td>
+</table>
+<table>
+  <td> topic_participants </td>
+  <td></td>
+  <td> topic_id </td> 
+  <td> user_id </td>
+</table>
+<table>
+  <td> points </td>
+  <td></td>
+  <td> id </td>
+  <td> title </td>
+  <td> description </td>
+  <td> topic_id </td>
+  <td> user_id </td>
+</table>
+<table>
+  <td> votes </td>
+  <td></td>
+  <td> user_id </td> 
+  <td> point_id </td>
+  <td> kind </td> 
+</table>
 
-##### routes
+### Apicontroller Structure
+
+#### routes
 ```ruby
 namespace :api  do
   namespace :v0  do
@@ -67,11 +66,7 @@ namespace :api  do
   end
 end
 ``` 
-sub version is integer , start 1 .
-
-##### controllers
-
-ApiController folders look like:
+#### controllers
 
 ```
 api
@@ -98,5 +93,3 @@ class  Api::V0::TopicsController < Api::V0::ApiController
   end
 end
 ```
-
-
