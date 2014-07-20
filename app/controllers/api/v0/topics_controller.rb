@@ -1,12 +1,13 @@
 class  Api::V0::TopicsController < Api::V0::ApiController
 
+  respond_to :json
+
   def index
-    render json: { topics: Topic.all }
+    @topics = Topic.all
   end
 
   def show
-    topic = Topic.find(params[:id])
-    render json: { topic: topic, points: topic.points }
+    @points = Topic.find(params[:id]).points
   end
 
 end

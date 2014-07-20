@@ -18,4 +18,8 @@ class Point < ActiveRecord::Base
   belongs_to :user
   belongs_to :topic
 
+  def username
+    self.user.try(:nickname)
+  end
+
 end

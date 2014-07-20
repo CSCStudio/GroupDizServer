@@ -25,4 +25,9 @@ class Topic < ActiveRecord::Base
 
   has_and_belongs_to_many :participants, class_name: 'User', foreign_key: "user_id", join_table: 'topics_participants'
   has_many :points
+
+
+  def creator_name
+    self.creator.try(:nickname)
+  end
 end

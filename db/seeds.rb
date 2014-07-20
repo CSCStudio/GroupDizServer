@@ -16,6 +16,8 @@ Topic.destroy_all
   Topic.create(title: "this is title", description: 'is point description', code: SecureRandom.hex(3), creator: User.last)
 end
 
+Point.destroy_all
+
 Topic.all.each do |topic|
   topic.participants << User.all
 
