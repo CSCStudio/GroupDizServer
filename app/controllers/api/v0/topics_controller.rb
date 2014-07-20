@@ -4,4 +4,9 @@ class  Api::V0::TopicsController < Api::V0::ApiController
     render json: Topic.all  
   end
 
+  def show
+    topic = Topic.find(params[:id])
+    render json: { topic: topic, points: topic.points }
+  end
+
 end

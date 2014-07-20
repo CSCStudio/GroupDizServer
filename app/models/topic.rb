@@ -24,4 +24,5 @@ class Topic < ActiveRecord::Base
   belongs_to :creator, class_name: 'User'
 
   has_and_belongs_to_many :participants, class_name: 'User', foreign_key: "user_id", join_table: 'topics_participants'
+  has_many :points
 end
