@@ -3,7 +3,13 @@ class  Api::V0::UsersController < Api::V0::ApiController
   skip_before_action :authorize_token!
 
   def create
-    user = User.create(nickname: params[:user][:nickname], identifier: request_token)
+    @user = User.create(nickname: params[:nickname], identifier: params[:identifier])
+    
+    if @user.errors.empty?
+      render status: 200, json: { message: "Created Successful" }
+    else
+      render status: 400, json: { message: @user.errors.to_a.first }
+    end
   end
 
   def show
