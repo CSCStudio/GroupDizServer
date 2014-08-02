@@ -39,6 +39,7 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.1'
   gem 'factory_girl_rails', '~> 4.4.1'
+  gem 'byebug', '~> 3.1.2'
 end
 
 # bundle exec rake doc:rails generates the API under doc/api.

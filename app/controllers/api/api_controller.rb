@@ -28,8 +28,8 @@ class  Api::ApiController < ActionController::Base
   protected
 
   def authorize_token!
-    current_user = User.where(:identifier => request_token).first
-    raise UnprocessableEntity if current_user.nil?
+    @current_user = User.where(:identifier => request_token).first
+    raise UnprocessableEntity if @current_user.nil?
   end
 
   def request_token
@@ -42,5 +42,9 @@ class  Api::ApiController < ActionController::Base
       auth_token = match[2] unless match.nil?
     end
     auth_token
+  end
+
+  def current_user
+    @current_user
   end
 end

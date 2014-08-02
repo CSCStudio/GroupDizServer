@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     namespace :v0  do
       scope ":sub_version" do
         resources :topics
+        resources :users, only: [:create] 
       end
     end
   end
