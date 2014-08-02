@@ -5,4 +5,8 @@ class  Api::V0::UsersController < Api::V0::ApiController
   def create
     user = User.create(nickname: params[:user][:nickname], identifier: request_token)
   end
+
+  def show
+    @user = User.find_by(:identifier => params[:id])
+  end
 end
