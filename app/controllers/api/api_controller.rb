@@ -41,6 +41,7 @@ class  Api::ApiController < ActionController::Base
       match = auth_header.match(/\AGROUP\s+.*?token=("|')(.+?)\1.*?\z/)
       auth_token = match[2] unless match.nil?
     end
+    raise NotAcceptable unless auth_token
     auth_token
   end
 
