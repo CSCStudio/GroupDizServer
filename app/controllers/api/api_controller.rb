@@ -28,6 +28,11 @@ class  Api::ApiController < ActionController::Base
   protected
 
   def authorize_token!
+    current_user = User.where(:identifier => request_token).first
+    raise UnprocessableEntity if current_user.nil?
+  end
+
+  def request_token
     auth_token = nil
     auth_header =  request.headers['Authorization']
     if auth_header.nil?
@@ -36,10 +41,6 @@ class  Api::ApiController < ActionController::Base
       match = auth_header.match(/\AGROUP\s+.*?token=("|')(.+?)\1.*?\z/)
       auth_token = match[2] unless match.nil?
     end
-    raise NotAcceptable if auth_token.blank?
-
-    current_user = User.where(:identifier => auth_token).first
-
-    raise UnprocessableEntity if current_user.nil?
+    auth_token
   end
 end
