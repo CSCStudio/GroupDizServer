@@ -28,7 +28,7 @@ class  Api::ApiController < ActionController::Base
   protected
 
   def authorize_token!
-    @current_user = User.find_by(:identifier => params[:id])
+    @current_user = User.find_by(:identifier => request_token)
     raise UnprocessableEntity if @current_user.nil?
   end
 
@@ -36,9 +36,9 @@ class  Api::ApiController < ActionController::Base
     auth_token = nil
     auth_header =  request.headers['Authorization']
     if auth_header.nil?
-      auth_token = params[:token]
+      auth_token = params[:identifier]
     else
-      match = auth_header.match(/\AGROUP\s+.*?token=("|')(.+?)\1.*?\z/)
+      match = auth_header.match(/\AGROUP\s+.*?identifier=("|')(.+?)\1.*?\z/)
       auth_token = match[2] unless match.nil?
     end
     raise NotAcceptable unless auth_token

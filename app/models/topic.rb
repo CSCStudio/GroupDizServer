@@ -26,6 +26,7 @@ class Topic < ActiveRecord::Base
   has_and_belongs_to_many :participants, class_name: 'User', foreign_key: "topic_id", association_foreign_key: 'user_id', join_table: 'topics_participants'
   has_many :points
 
+  before_validation :init_code, on: :create
   after_create :init_participant
 
 
@@ -37,5 +38,9 @@ class Topic < ActiveRecord::Base
 
   def init_participant
     self.participants << self.creator
+  end
+
+  def init_code
+    self.code = SecureRandom.hex(3)
   end
 end
