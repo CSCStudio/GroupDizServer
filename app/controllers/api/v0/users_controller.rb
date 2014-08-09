@@ -1,6 +1,6 @@
 class  Api::V0::UsersController < Api::V0::ApiController
   respond_to :json
-  skip_before_action :authorize_token!
+  skip_before_action :authorize_token!, :except => [:join_topic]
 
   def create
     @user = User.create(nickname: params[:nickname], identifier: params[:identifier])
@@ -14,5 +14,20 @@ class  Api::V0::UsersController < Api::V0::ApiController
 
   def show
     @user = User.find_by(:identifier => params[:id])
+  end
+
+  def join_topic
+    raise BadRequest unless params[:code]
+    @topic = Topic.find_by(code: params[:code])
+    if @topic 
+      if @topic.participants << current_user
+        render 'api/v0/topics/general_info'
+      else
+        render status: 400, json: { message: "You had Joined this room" }
+      end
+    else
+      render status: 400, json: { message: "Topic Not Found" }
+    end
+
   end
 end

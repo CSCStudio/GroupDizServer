@@ -28,7 +28,7 @@ class  Api::ApiController < ActionController::Base
   protected
 
   def authorize_token!
-    @current_user = User.find_by(:identifier => request_token)
+    @current_user ||= User.find_by(:identifier => request_token)
     raise UnprocessableEntity if @current_user.nil?
   end
 
