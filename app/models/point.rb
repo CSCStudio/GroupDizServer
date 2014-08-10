@@ -21,5 +21,4 @@ class Point < ActiveRecord::Base
   def username
     self.user.try(:nickname)
   end
-
 end

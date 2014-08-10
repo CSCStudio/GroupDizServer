@@ -1,0 +1,1 @@
+json.extract! @point, :id, :title, :description, :username, :created_at

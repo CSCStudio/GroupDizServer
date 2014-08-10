@@ -10,6 +10,8 @@ Rails.application.routes.draw do
             post :join_topic 
           end
         end
+
+        resources :points, only: [:create]
       end
     end
   end

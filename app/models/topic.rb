@@ -31,7 +31,7 @@ class Topic < ActiveRecord::Base
 
 
   def creator_name
-    self.creator.try(:nickname)
+    self.creator.try(:nickname) || "No Setting yet"
   end
 
   private
