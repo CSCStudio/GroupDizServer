@@ -21,5 +21,6 @@ class User < ActiveRecord::Base
   has_many :created_topics, class_name: 'Topic', foreign_key: "creator_id"
 
   has_and_belongs_to_many :participated_topics, class_name: 'Topic', foreign_key: "user_id", association_foreign_key: 'topic_id', join_table: 'topics_participants'
+  has_many :votes, dependent: :destroy
 
 end

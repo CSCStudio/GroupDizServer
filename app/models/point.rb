@@ -17,6 +17,7 @@ class Point < ActiveRecord::Base
   
   belongs_to :user
   belongs_to :topic
+  has_many :votes, dependent: :destroy
 
   def username
     self.user.try(:nickname)

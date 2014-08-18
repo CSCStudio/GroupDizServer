@@ -19,6 +19,8 @@
 class Vote < ActiveRecord::Base
 
   validates :user_id, :point_id, presence: true
+
+  validates :user_id, uniqueness: { scope: :point_id , message: 'have voted yet'}
   
   belongs_to :user
   belongs_to :point

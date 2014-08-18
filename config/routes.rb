@@ -11,7 +11,9 @@ Rails.application.routes.draw do
           end
         end
 
-        resources :points, only: [:create]
+        resources :points, only: [:create] do 
+          resources :votes, only: [:create]
+        end
       end
     end
   end
