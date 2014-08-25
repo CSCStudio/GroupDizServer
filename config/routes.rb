@@ -19,5 +19,5 @@ Rails.application.routes.draw do
   end
 
   #For site email subs
-  resources :sub_emails, only: [:create]
+  resources :sub_emails, only: [:create, :index]
 end
