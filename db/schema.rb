@@ -11,13 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140719100409) do
+ActiveRecord::Schema.define(version: 20140825082017) do
 
   create_table "points", force: true do |t|
     t.string   "title"
     t.text     "description"
     t.integer  "topic_id"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sub_emails", force: true do |t|
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
